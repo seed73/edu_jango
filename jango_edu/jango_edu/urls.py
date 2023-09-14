@@ -1,7 +1,8 @@
-"""edu_django URL Configuration
+"""
+URL configuration for jango_edu project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -14,10 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from review import views # 혹은 앱이름.views 이렇게 써도 무방
+from django.urls import path, include
+from mozilla_django_oidc import views as oidc_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('review/',views.main,name='review-main')
+    path('api/', include('student.urls')),
+    path('oidc/', include('mozilla_django_oidc.urls')),
+    # path('login/', oidc_views.OIDCAuthenticationRequestView.as_view(), name='login'),
+    # path('logout/', oidc_views.OIDCLogoutView.as_view(), name='logout'),
+    path('auth/', include('keycloak_auth.urls')),
 ]
