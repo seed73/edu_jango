@@ -8,9 +8,9 @@ class TokenValidationMiddleware:
         token = request.headers.get('Authorization', '').split('Bearer ')[-1]
         
         # Replace the following constants with appropriate values
-        JWKS_URL = "http://localhost:8080/auth/realms/edu/protocol/openid-connect/certs"
+        JWKS_URL = "http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/certs"
         AUDIENCE = "eduplex_account"
-        ISSUER = "http://localhost:8080/auth/realms/edu"
+        ISSUER = "http://seed32.synology.me:31479/auth/realms/edu"
 
         try:
             payload = validate_token(token, JWKS_URL, AUDIENCE, ISSUER)

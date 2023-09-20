@@ -7,7 +7,7 @@ def login(request):
     password = request.POST.get('password')
     
     # Keycloak 인증 URL
-    token_url = "http://localhost:8080/auth/realms/edu/protocol/openid-connect/token"
+    token_url = "http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/token"
     
     # Client 정보 (Keycloak에서 설정)
     client_id = "eduplex_account"

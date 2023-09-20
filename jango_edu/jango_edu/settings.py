@@ -147,10 +147,10 @@ REST_FRAMEWORK = {
 OIDC_RP_CLIENT_ID = 'eduplex_account'
 OIDC_RP_CLIENT_SECRET = 'MIICrTCCAZUCBgGKQBO1ezANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9lZHVwbGV4X2FjY291bnQwHhcNMjMwODI5MDY1NDA4WhcNMzMwODI5MDY1NTQ4WjAaMRgwFgYDVQQDDA9lZHVwbGV4X2FjY291bnQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCGhVe7Gs6AMpcGVH4bmhGEwxC1J2aWt9/NUVGg9hUmKGNYtNhcY0ozYzA5zwJv6ZNHDUvwPENCpRKTdXRsN7pkF86FwenhkorKpa+x5ZdESMAbEgEH73eUZFgFj6NGyDjb+4g8VOpGDniR1DXcN5rcYNC97tAh7Iq5W5a6NRuoN7+KHejg96RdNIIa0Wx56kPCCrWQ0AQCyxLG+OtN+ptO+7e5lGdGd1Ow5MRqrrLLEWxaWZUeV6Y34foc9F9tnZ/PLtGmUJffUnB7c07zTuaEJ6Xd6ruqYx/EgPScZEs8yTWJhUbSXs0PHsJoQm0IZ8nOB/vR3kF9ev6pI9jLBpbpAgMBAAEwDQYJKoZIhvcNAQELBQADggEBACIhD3jRD68TNqXLE6N1VIwyuBxY3IyXY6t1ulq7gVWWsYEhtLnX1Ak1VbaZml9AmIVzW2eVYBHTOHV2OjusD8WQB2oUNZm97H1XzQO0BEr1sD1dMNi7LpgJUIV8M7b6k+Acfro+3zA0dKm/CL3j+/BTQ7NOCvDpzlDCbC4zg366WWRqbyBWWpHJi2c21JQHMbu6n7kwwIXIkaN+NB2g+QXUVySq4HDkbK+/A1wfsaohYxs25Se+rcdrRjqSVftH9aIECf9B1djS/G+qKmwm5lUVsYDoPEVmosFNKRIzK+aHrZZtOc5A7M51nV5UJT8AQkaBI9zk+5ZJyAF5Q71c2h0='
 
-OIDC_OP_AUTHORIZATION_ENDPOINT = 'http://localhost:8080/auth/realms/edu/protocol/openid-connect/auth'
-OIDC_OP_TOKEN_ENDPOINT = 'http://localhost:8080/auth/realms/edu/protocol/openid-connect/token'
-OIDC_OP_USER_ENDPOINT = 'https//localhost:8080/auth/realms/edu/protocol/openid-connect/userinfo'
-OIDC_OP_JWKS_ENDPOINT = 'https//localhost:8080/auth/realms/edu/protocol/openid-connect/certs'
-OIDC_OP_LOGOUT_ENDPOINT = 'http://localhost:8080/auth/realms/edu/protocol/openid-connect/logout'
+OIDC_OP_AUTHORIZATION_ENDPOINT = 'http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/auth'
+OIDC_OP_TOKEN_ENDPOINT = 'http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/token'
+OIDC_OP_USER_ENDPOINT = 'https//http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/userinfo'
+OIDC_OP_JWKS_ENDPOINT = 'https//http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/certs'
+OIDC_OP_LOGOUT_ENDPOINT = 'http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/logout'
 
 OIDC_RP_SIGN_ALGO = 'RS256'
