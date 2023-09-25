@@ -2,3 +2,5 @@ djangorestframework
 psycopg2
 PyJWT
 requests
+drf-yasg
+mozilla_django_oidc 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'student',
     'mozilla_django_oidc',
     'keycloak_auth',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [

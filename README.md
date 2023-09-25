@@ -1,9 +1,13 @@
 # Anaconda 환경설정
 
 - env 생성
-conda create -n ex_env python=3.11.4
+conda create --prefix C:\myenvs\myenv python=3.11.4
 - env 활성화
-conda activate ex_env
+conda activate C:\myenvs\myenv
+
+현재 환경에서는
+
+conda activate C:\dev\danbi
 
 ## 기록
 
@@ -23,3 +27,15 @@ python manage.py migrate - 이 마이그레이션 파일들을 사용하여 데�
 python manage.py runserver
 
 python manage.py makemigrations your_app_name - 마이그레이션 파일 지워버렸을때 대책
+
+
+## pip 관리
+
+pip install -r requirements.txt
+
+
+## 문뜩 생각해본거
+
+가사 프리랜서들이 매칭할 수 있는 앱
+
+청소해주기 원하는 부위를 찍어 올리면 그걸 프리랜서 가사도우미들이 보고 before-after로 비교샷도 찍을 수 있는 뭐 그런 플랫폼?
