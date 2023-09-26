@@ -50,3 +50,12 @@ pip install -r requirements.txt
 
 eslint
 markdownlint
+
+## bat 작성법
+
+@echo off
+cd /D C:\dev\edu_django\jango_edu\
+
+%windir%\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy ByPass -NoExit -Command "& 'C:\ProgramData\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\ProgramData\anaconda3' ; conda activate C:\dev\danbi ; python manage.py runserver"
+
+Anaconda Powershell Prompt -> 속성 -> 대상 내용 복사해서 위에 콘다 관련 내용이랑 변환시키면 됨
