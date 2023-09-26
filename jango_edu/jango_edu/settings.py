@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'mozilla_django_oidc',
     'keycloak_auth',
     'drf_yasg',
+    'auth_app'
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
 }
 
 OIDC_RP_CLIENT_ID = 'eduplex_account'
@@ -155,3 +159,11 @@ OIDC_OP_JWKS_ENDPOINT = 'https//http://seed32.synology.me:31479/auth/realms/edu/
 OIDC_OP_LOGOUT_ENDPOINT = 'http://seed32.synology.me:31479/auth/realms/edu/protocol/openid-connect/logout'
 
 OIDC_RP_SIGN_ALGO = 'RS256'
+
+SIMPLE_JWT = {
+    'ALGORITHM': 'RS256',
+    'SIGNING_KEY': 'YOUR_PRIVATE_KEY',  # JWT 생성을 위한 Private Key (일반적으로 비워둘 것입니다.)
+    'VERIFYING_KEY': '6SbaYovyISBaBg3LHHDQAhiEhhBK8IQLPgn5OG7FC9Q',  # Keycloak에서 제공하는 Public Key
+    'ROTATE_REFRESH_TOKENS': False,
+    'VALIDATED_TOKEN_CLAIMS': ['exp', 'iat'],
+}

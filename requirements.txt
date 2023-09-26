@@ -3,4 +3,6 @@ psycopg2
 PyJWT
 requests
 drf-yasg
-mozilla_django_oidc 
+mozilla_django_oidc
+markdown
+djangorestframework-simplejwt

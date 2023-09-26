@@ -18,10 +18,12 @@ class Student(models.Model):
     name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=15)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
-    enrollment_date = models.DateField()
-    is_enrolled = models.BooleanField(default=True)
-    guardian_name = models.CharField(max_length=50, blank=True, null=True)
-    guardian_phone_number = models.CharField(max_length=15, blank=True, null=True)
+    enrollment_date = models.DateField() #등록일자
+    is_enrolled = models.BooleanField(default=True) #등록상태
+    mother_name = models.CharField(max_length=50, blank=True, null=True) #어머니 이름
+    mother_phone_number = models.CharField(max_length=15, blank=True, null=True) #어머니 핸드폰번호
+    father_name = models.CharField(max_length=50, blank=True, null=True) #아버지 이름
+    father_phone_number = models.CharField(max_length=15, blank=True, null=True) #아버지 핸드폰번호
 
     def __str__(self):
         return self.name
