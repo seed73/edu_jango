@@ -6,3 +6,4 @@ drf-yasg
 mozilla_django_oidc
 markdown
 djangorestframework-simplejwt
+python-decouple
