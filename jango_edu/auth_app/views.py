@@ -21,15 +21,17 @@ class AccountListCreate(generics.ListCreateAPIView):
         keycloak_realm = config('KEYCLOAK_REALM')
         keycloak_pass = config('KEYCLOAK_PASS')
         keycloak_client_id = config('KEYCLOAK_CLIENT_ID')
+        keycloak_secret = config('KEYCLOAK_SECRET')
 
         admin_token_url = f"{keycloak_host}/auth/realms/{keycloak_realm}/protocol/openid-connect/token"
-        admin_users_url = f"{keycloak_host}/auth/admin/realms/{keycloak_realm}/"
+        # admin_users_url = f"{keycloak_host}/auth/admin/realms/{keycloak_realm}/"
+        admin_users_url = f"{keycloak_host}/auth/admin/realms/{keycloak_realm}/users"
 
         # 관리자 토큰 가져오기
         admin_data = {
             "grant_type": "password",
             "client_id": keycloak_client_id,
-            "client_secret": "O5egwEiKgaVLDyPiUFqVjvbg2NWyGI3M",
+            "client_secret": keycloak_secret,
             "username": keycloak_id,
             "password": keycloak_pass
         }

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,14 +81,20 @@ WSGI_APPLICATION = 'jango_edu.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+db_name = config('DB_NAME')
+db_user = config('DB_USER')
+db_password = config('DB_PASSWORD')
+db_host = config('DB_HOST')
+db_port = config('DB_PORT')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'edu',
-        'USER': 'seed32',
-        'PASSWORD': 'gozjsldoal1!',
-        'HOST': 'seed32.synology.me',
-        'PORT': '31478',
+        'NAME': db_name,
+        'USER': db_user,
+        'PASSWORD': db_password,
+        'HOST': db_host,
+        'PORT': db_port,
         'OPTIONS': {
             'options': '-c search_path=edu'
         }
