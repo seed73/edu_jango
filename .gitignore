@@ -1,4 +1,4 @@
 *.pyc
-/jango_edu/auth_app/__pycache__/
+/jango_edu/auth_app/__pycache__
 .env
 /jango_edu/logs

@@ -25,6 +25,9 @@ postgresSQL 설치해서 원격 접속해봄
 
 python manage.py startapp app_name
 
+seriailizers.py
+urls.py 복사해서 넣어주기
+
 settings.py -> INSTALLED_APPS에 app_name 추가
 
 ## 모델 수정하면 해줘야 하는거
