@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from jango_edu.student_manage.models import StudentRecord, StudentRecordHistory
+from student_manage.models import StudentRecord, StudentRecordHistory
 
 @receiver(post_save, sender=StudentRecord)
 def save_history(sender, instance, **kwargs):

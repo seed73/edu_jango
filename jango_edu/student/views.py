@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, status, viewsets
 from .models import Item, Student
 from .serializers import ItemSerializer, StudentSerializer
 
@@ -7,6 +7,6 @@ class ItemListCreate(generics.ListCreateAPIView):
     serializer_class = ItemSerializer
 
 
-class StudentListCreate(generics.ListCreateAPIView):
+class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer

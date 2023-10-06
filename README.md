@@ -30,6 +30,8 @@ urls.py 복사해서 넣어주기
 
 settings.py -> INSTALLED_APPS에 app_name 추가
 
+edu_django.urls.urlpatterns에 url추가
+
 ## 모델 수정하면 해줘야 하는거
 
 python manage.py makemigrations  - 모델의 변경 사항을 감지하여 데이터베이스 마이그레이션 파일을 생성합니다.

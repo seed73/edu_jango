@@ -44,6 +44,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('student.urls')),
     path('api/', include('auth_app.urls')),
+    path('api/', include('student_manage.urls')),
     path('oidc/', include('mozilla_django_oidc.urls')),
     # path('login/', oidc_views.OIDCAuthenticationRequestView.as_view(), name='login'),
     # path('logout/', oidc_views.OIDCLogoutView.as_view(), name='logout'),

@@ -1,6 +1,10 @@
-from django.urls import path
-from .views import AccountListCreate
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import AccountViewSet
+
+router = DefaultRouter()
+router.register(r'account', AccountViewSet)
 
 urlpatterns = [
-    path('account/', AccountListCreate.as_view(), name='item-list-create'),
+    path('', include(router.urls)),
 ]

@@ -1,7 +1,11 @@
-from django.urls import path
-from .views import ItemListCreate, StudentListCreate
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ExamRecordViewSet, StudentRecordViewSet
+
+router = DefaultRouter()
+router.register(r'stuedentRecord', StudentRecordViewSet)
+router.register(r'examRecord', ExamRecordViewSet)
 
 urlpatterns = [
-    path('items/', ItemListCreate.as_view(), name='item-list-create'),
-    path('student/', StudentListCreate.as_view(), name='item-list-create'),
+    path('', include(router.urls)),
 ]

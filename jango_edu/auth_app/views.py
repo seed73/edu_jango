@@ -1,4 +1,4 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from .models import Account
 from .serializers import AccountSerializer
 import requests
@@ -8,12 +8,12 @@ from utils.logger import get_logger
 
 logger = get_logger()
 
-class AccountListCreate(generics.ListCreateAPIView):
+class AccountViewSet(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
 
-    def post(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 

@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import Item, Student
+from .models import StudentRecord, ExamRecord
 
-class ItemSerializer(serializers.ModelSerializer):
+class StudentRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Item
+        model = StudentRecord
         fields = '__all__'
 
-class StudentSerializer(serializers.ModelSerializer):
+class ExamRecordSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Student
+        model = ExamRecord
         fields = '__all__'
