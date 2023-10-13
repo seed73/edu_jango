@@ -3,3 +3,4 @@
 .env
 /jango_edu/logs
 __pycache__/
+/react_edu/node_modules

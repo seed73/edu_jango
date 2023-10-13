@@ -1,4 +1,10 @@
-# Anaconda 환경설정
+# 어플리케이션 스펙
+
+- backend django
+- frontend react
+- db postgresSQL
+
+## Anaconda 환경설정
 
 - env 생성
 conda create --prefix C:\myenvs\myenv python=3.11.4
@@ -70,3 +76,12 @@ cd /D C:\Developers\django_edu\jango_edu\
 %windir%\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\akuo\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate django ; python manage.py makemigrations ; python manage.py migrate"
 
 모델 수정후에 동작시키는거
+
+## frontend 세팅
+
+node.js 18.4.0
+npm install -g create-react-app
+
+- 그냥 실행하려면?
+
+npm start
