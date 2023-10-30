@@ -8,3 +8,4 @@ markdown
 djangorestframework-simplejwt
 python-decouple
 loguru
+pycryptodome

@@ -48,7 +48,7 @@ urlpatterns = [
     path('oidc/', include('mozilla_django_oidc.urls')),
     # path('login/', oidc_views.OIDCAuthenticationRequestView.as_view(), name='login'),
     # path('logout/', oidc_views.OIDCLogoutView.as_view(), name='logout'),
-    path('auth/', include('keycloak_auth.urls')),
+    path('api/', include('keycloak_auth.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # path('api-auth', include('rest_framework.urls')),
