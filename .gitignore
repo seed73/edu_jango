@@ -2,5 +2,5 @@
 /jango_edu/auth_app/__pycache__
 .env
 /jango_edu/logs
-__pycache__/
+/jango_edu/keycloak_auth/__pycache__
 /react_edu/node_modules
