@@ -9,3 +9,4 @@ djangorestframework-simplejwt
 python-decouple
 loguru
 pycryptodome
+python-jose

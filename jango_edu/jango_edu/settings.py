@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,6 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = (
     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+    'auth_app.keycloak_backend.KeycloakBackend',
 )
 
 
@@ -151,9 +153,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'auth_app.keycloak_backend.KeycloakBackend',
     ]
 }
 
@@ -168,10 +171,12 @@ OIDC_OP_LOGOUT_ENDPOINT = 'http://seed32.synology.me:31479/auth/realms/edu/proto
 
 OIDC_RP_SIGN_ALGO = 'RS256'
 
-SIMPLE_JWT = {
-    'ALGORITHM': 'RS256',
-    'SIGNING_KEY': 'YOUR_PRIVATE_KEY',  # JWT 생성을 위한 Private Key (일반적으로 비워둘 것입니다.)
-    'VERIFYING_KEY': '6SbaYovyISBaBg3LHHDQAhiEhhBK8IQLPgn5OG7FC9Q',  # Keycloak에서 제공하는 Public Key
-    'ROTATE_REFRESH_TOKENS': False,
-    'VALIDATED_TOKEN_CLAIMS': ['exp', 'iat'],
-}
+SWAGGER_SETTINGS = {
+      'SECURITY_DEFINITIONS': {
+         'DRF Token': {
+               'type': 'apiKey',
+               'name': 'Authorization',
+               'in': 'header'
+         }
+      }
+   }

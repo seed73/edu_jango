@@ -5,6 +5,7 @@ import requests
 from utils.crypto import encrypt_data, decrypt_data
 from rest_framework import serializers
 from decouple import config
+from rest_framework.permissions import AllowAny
 
 
 class LoginSerializer(serializers.Serializer):
@@ -12,7 +13,7 @@ class LoginSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
     
 class LoginView(APIView):
-
+    permission_classes = [AllowAny]
     serializer_class = LoginSerializer
 
     def get_serializer(self, *args, **kwargs):
@@ -22,7 +23,6 @@ class LoginView(APIView):
 
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-
 
         username = decrypt_data(serializer.validated_data['username'])
         password = decrypt_data(serializer.validated_data['password'])
