@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # 'rest_framework.authtoken',
     'mozilla_django_oidc',
     'keycloak_auth',
     'drf_yasg',
@@ -52,11 +53,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'mozilla_django_oidc.middleware.SessionRefresh',
+    # 'mozilla_django_oidc.middleware.SessionRefresh',
 ]
 
 ROOT_URLCONF = 'jango_edu.urls'
@@ -122,10 +123,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = (
-    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
-    'auth_app.keycloak_backend.KeycloakBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
+#     'keycloak_auth.keycloak_backend.KeycloakBackend',
+# )
 
 
 # Internationalization
@@ -151,13 +152,60 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
+    'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'auth_app.keycloak_backend.KeycloakBackend',
-    ]
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oidc_auth.authentication.JSONWebTokenAuthentication',
+        'oidc_auth.authentication.BearerTokenAuthentication',
+    ),
+}
+
+OIDC_AUTH = {
+    # Specify OpenID Connect endpoint. Configuration will be
+    # automatically done based on the discovery document found
+    # at <endpoint>/.well-known/openid-configuration
+    'OIDC_ENDPOINT': 'http://keycloak:8080/auth/realms/poleval',
+
+    # The Claims Options can now be defined by a static string.
+    # ref: https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation
+    # The old OIDC_AUDIENCES option is removed in favor of this new option.
+    # `aud` is only required, when you set it as an essential claim.
+    'OIDC_CLAIMS_OPTIONS': {
+        'aud': {
+            'values': ['poleval'],
+            'essential': True,
+        }
+    },
+
+    # (Optional) Function that resolves id_token into user.
+    # This function receives a request and an id_token dict and expects to
+    # return a User object. The default implementation tries to find the user
+    # based on username (natural key) taken from the 'sub'-claim of the
+    # id_token.
+    'OIDC_RESOLVE_USER_FUNCTION': 'example.authentication.get_user_by_email',
+
+    # (Optional) Number of seconds in the past valid tokens can be
+    # issued (default 600)
+    'OIDC_LEEWAY': 600,
+
+    # (Optional) Time before signing keys will be refreshed (default 24 hrs)
+    'OIDC_JWKS_EXPIRATION_TIME': 24 * 60 * 60,
+
+    # (Optional) Time before bearer token validity is verified again (default 10 minutes)
+    'OIDC_BEARER_TOKEN_EXPIRATION_TIME': 10 * 60,
+
+    # (Optional) Token prefix in JWT authorization header (default 'JWT')
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+
+    # (Optional) Token prefix in Bearer authorization header (default 'Bearer')
+    'BEARER_AUTH_HEADER_PREFIX': 'Bearer',
+
+    # (Optional) Which Django cache to use
+    'OIDC_CACHE_NAME': 'default',
+
+    # (Optional) A cache key prefix when storing and retrieving cached values
+    'OIDC_CACHE_PREFIX': 'oidc_auth.',
 }
 
 OIDC_RP_CLIENT_ID = 'eduplex_account'

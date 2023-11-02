@@ -5,13 +5,14 @@ import requests
 from rest_framework.response import Response
 from decouple import config
 from utils.logger import get_logger
+from rest_framework.permissions import AllowAny
 
 logger = get_logger()
 
 class AccountViewSet(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
-
+    permission_classes = [AllowAny]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -52,7 +53,7 @@ class AccountViewSet(viewsets.ModelViewSet):
             "Content-Type": "application/json"
         }
         user_info = {
-            "username": serializer.validated_data['name'],
+            "username": serializer.validated_data['user_id'],
             "enabled": True,
             "emailVerified": True,  # 필요에 따라 변경
             "email": serializer.validated_data['email'],
@@ -64,4 +65,4 @@ class AccountViewSet(viewsets.ModelViewSet):
             logger.info(f"Response from Keycloak: {user_response.status_code} - {user_response.text}")
             return Response({"error": "Cannot create user in Keycloak"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        return super().post(request, *args, **kwargs)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
