@@ -23,6 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-nwo18nk)pa=fku@b7$z-q6zw_j9fhjkd#9jx2lssuzs&kijj2z'
+CLEINT_ID = 'edu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'rest_framework.authtoken',
     'mozilla_django_oidc',
     'keycloak_auth',
     'drf_yasg',
@@ -57,7 +57,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'mozilla_django_oidc.middleware.SessionRefresh',
 ]
 
 ROOT_URLCONF = 'jango_edu.urls'
@@ -153,7 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oidc_auth.authentication.JSONWebTokenAuthentication',
@@ -165,7 +164,7 @@ OIDC_AUTH = {
     # Specify OpenID Connect endpoint. Configuration will be
     # automatically done based on the discovery document found
     # at <endpoint>/.well-known/openid-configuration
-    'OIDC_ENDPOINT': 'http://keycloak:8080/auth/realms/poleval',
+    'OIDC_ENDPOINT': 'http://seed32.synology.me:31479/auth/realms/edu',
 
     # The Claims Options can now be defined by a static string.
     # ref: https://docs.authlib.org/en/latest/jose/jwt.html#jwt-payload-claims-validation
@@ -173,7 +172,7 @@ OIDC_AUTH = {
     # `aud` is only required, when you set it as an essential claim.
     'OIDC_CLAIMS_OPTIONS': {
         'aud': {
-            'values': ['poleval'],
+            'values': ['edu'],
             'essential': True,
         }
     },
@@ -183,7 +182,7 @@ OIDC_AUTH = {
     # return a User object. The default implementation tries to find the user
     # based on username (natural key) taken from the 'sub'-claim of the
     # id_token.
-    'OIDC_RESOLVE_USER_FUNCTION': 'example.authentication.get_user_by_email',
+    'OIDC_RESOLVE_USER_FUNCTION': 'auth_app.authentication.get_user_by_email',
 
     # (Optional) Number of seconds in the past valid tokens can be
     # issued (default 600)

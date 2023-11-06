@@ -2,7 +2,8 @@ from rest_framework import generics, status, viewsets
 from .models import Item, Student
 from .serializers import ItemSerializer, StudentSerializer
 
-class ItemListCreate(generics.ListCreateAPIView):
+# class ItemListCreate(generics.ListCreateAPIView):
+class ItemListCreate(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
 

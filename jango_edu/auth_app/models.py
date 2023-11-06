@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, user_id, name, phone_number, gender, entering_date, employment_status=True, password=None, **extra_fields):
@@ -76,6 +77,23 @@ class Account(AbstractBaseUser, PermissionsMixin):
         # The user is identified by their name
         return self.name
 
-    def email_user(self, subject, message, from_email=None, **kwargs):
-        # Sends an email to this User.
-        send_mail(subject, message, from_email, [self.email], **kwargs)
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name=_('groups'),
+        blank=True,
+        help_text=_(
+            'The groups this user belongs to. A user will get all permissions '
+            'granted to each of their groups.'
+        ),
+        related_name="account_set",  # 'user_set' 대신 다른 이름 사용
+        related_query_name="account",
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name=_('user permissions'),
+        blank=True,
+        help_text=_('Specific permissions for this user.'),
+        related_name="account_set",  # 'user_set' 대신 다른 이름 사용
+        related_query_name="account",
+    )
