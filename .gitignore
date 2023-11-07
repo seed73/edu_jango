@@ -4,3 +4,4 @@
 /jango_edu/logs
 /jango_edu/keycloak_auth/__pycache__
 /react_edu/node_modules
+*.log
