@@ -11,13 +11,32 @@ class ItemListCreate(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
-            # 여기서 request.user는 인증된 사용자의 정보를 가집니다.
-            # 예를 들어, request.user.username, request.user.email 등으로 접근 가능합니다.
-            # 이 정보를 사용하여 레코드를 저장할 수 있습니다.
-            serializer.save(user=request.user)
+            item = serializer.save()
+        
+            # 생성된 인스턴스 수정
+            item.description = item.description + ' test'
+            item.save()  # 변경 사항 저장
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+
+        # 여기에 커스텀 필터 로직 추가
+        # 예시: queryset = queryset.filter(name__contains=request.query_params.get('name', ''))
+
+        token = request.META.get('HTTP_AUTHORIZATION', None)
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+    
 
 
 class StudentViewSet(viewsets.ModelViewSet):

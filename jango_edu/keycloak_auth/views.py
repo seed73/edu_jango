@@ -26,6 +26,9 @@ class LoginView(APIView):
         serializer.is_valid(raise_exception=True)
 
         # username과 password가 유효한 base64 문자열인지 확인
+
+        print(encrypt_data(serializer.validated_data['username']))
+        print(encrypt_data(serializer.validated_data['password']))
         
         try:
             username = decrypt_data(serializer.validated_data['username'])

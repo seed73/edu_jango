@@ -17,6 +17,7 @@ class AccountViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        serializer.save()
 
         password = serializer.validated_data['password']
 
@@ -60,6 +61,8 @@ class AccountViewSet(viewsets.ModelViewSet):
             "credentials": [{"type": "password", "value": password, "temporary": False}]
         }
         user_response = requests.post(admin_users_url, json=user_info, headers=headers)
+
+
 
         if user_response.status_code != 201:
             logger.info(f"Response from Keycloak: {user_response.status_code} - {user_response.text}")

@@ -149,6 +149,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oidc_auth.authentication.JSONWebTokenAuthentication',
         'oidc_auth.authentication.BearerTokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
