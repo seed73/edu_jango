@@ -8,8 +8,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('ID:', id, 'Password:', password);
-        // 여기에 로그인 로직을 추가할 수 있습니다.
+        console.log(process.env.REACT_APP_EDU_URL)
     };
 
     return (
