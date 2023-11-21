@@ -1,5 +1,6 @@
 from django.http import JsonResponse
-from utils.crypto import encrypt_data, decrypt_data
+from utils.crypto import encrypt_data, decrypt_data, decode_base64
+from decouple import config
 
 class ClientAuthenticationMiddleware:
     def __init__(self, get_response):
@@ -17,8 +18,11 @@ class ClientAuthenticationMiddleware:
         return response
 
     def validate_client(self, authorization):
-        print('1111111111111')
-        print(decrypt_data(authorization))
-        # 여기에 클라이언트 인증 로직 구현
-        # 예: 데이터베이스에 저장된 ID와 시크릿을 확인
-        return True  # 임시로 항상 True 반환
+        print(decode_base64(authorization))
+        SECRET_KEY = config('AES256_SECRET_KEY')
+        if authorization == 'Basic dbrkdgmlWkdWkdaos 2ff3e2db21a9ba8a9d430d1167fdf015db14bde40cefc66cc83ff978cfb36380':
+            # 여기에 클라이언트 인증 로직 구현
+            # 예: 데이터베이스에 저장된 ID와 시크릿을 확인
+            return True  # 임시로 항상 True 반환
+        else:
+            return False

@@ -29,3 +29,9 @@ def decrypt_data(encrypted_text):
     padded_text = cipher.decrypt(encrypted_data_bytes)
     plain_text = unpad(padded_text, AES.block_size).decode('utf-8')
     return plain_text
+
+
+def decode_base64(data):
+    # Base64 데이터를 디코딩
+    decoded_data = b64decode(data).decode('utf-8')
+    return decoded_data
