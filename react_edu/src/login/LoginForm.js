@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../loginPage.css';
+import {login} from '../api/student.js'
 
 
 function LoginForm() {
@@ -8,7 +9,10 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(process.env.REACT_APP_EDU_URL)
+        // console.log(process.env.REACT_APP_EDU_URL)
+
+        const data = login(id,password)
+        console.log(data)
     };
 
     return (

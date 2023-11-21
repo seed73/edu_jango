@@ -11,3 +11,4 @@ loguru
 pycryptodome
 python-jose
 drf-oidc-auth
+django-cors-headers

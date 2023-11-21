@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'auth_app',
     'student',
     'student_manage',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'middlewares.ClientAuthenticationMiddleware.ClientAuthenticationMiddleware',    
+    
 ]
 
 ROOT_URLCONF = 'jango_edu.urls'
@@ -211,3 +215,15 @@ SWAGGER_SETTINGS = {
          }
       }
    }
+
+
+# 개발 중에는 모든 출처를 허용
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# 배포 시에는 특정 출처만 허용
+CORS_ALLOWED_ORIGINS = [
+    # "https://example.com",
+    # "https://sub.example.com",
+    "http://localhost:3000",
+    # "http://127.0.0.1:9000",
+]

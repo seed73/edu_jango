@@ -85,3 +85,7 @@ npm install -g create-react-app
 - 그냥 실행하려면?
 
 npm start
+
+- yarn에 추가된 package 적용하려면?
+
+yarn install
