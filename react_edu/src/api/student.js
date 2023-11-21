@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = `${process.env.REACT_APP_EDU_PROTOCOL}://${process.env.REACT_APP_EDU_URL}:${process.env.REACT_APP_EDU_PORT}/api`;
-const Authorization = `Basic ${process.env.REACT_APP_EDU_FRONT_ID} ${process.env.REACT_APP_EDU_FRONT_CLIENT_SECRET}`
+const Authorization = btoa(`Basic ${process.env.REACT_APP_EDU_FRONT_ID} ${process.env.REACT_APP_EDU_FRONT_CLIENT_SECRET}`)
 
 const login = async (username, password) => {
 
