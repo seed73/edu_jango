@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
 import '../loginPage.css';
-import {login} from '../api/student.js'
+import {login} from '../api/auth.js'
 
 
 function LoginForm() {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(process.env.REACT_APP_EDU_URL)
-
-        const data = login(id,password)
-        console.log(data)
+        const res = await login(id,password);
+        console.log(res.error);
     };
 
     return (

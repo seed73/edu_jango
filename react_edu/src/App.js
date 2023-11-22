@@ -1,14 +1,10 @@
-// src/App.js
-import React from 'react';
-import './App.css';
-import Login from './loginPage';
+import { useRoutes } from "react-router-dom";
+import Themeroutes from "./routes/Router";
 
-function App() {
-  return (
-    <div className="App">
-      <Login />
-    </div>
-  );
-}
+const App = () => {
+  const routing = useRoutes(Themeroutes);
+
+  return <div className="dark">{routing}</div>;
+};
 
 export default App;
