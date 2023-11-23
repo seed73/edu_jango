@@ -2,63 +2,81 @@ import { Button, Nav, NavItem } from "reactstrap";
 import Logo from "./Logo";
 import { Link, useLocation } from "react-router-dom";
 
+// const navigation = [
+//   {
+//     title: "Dashboard",
+//     href: "/starter",
+//     icon: "bi bi-speedometer2",
+//   },
+//   {
+//     title: "Alert",
+//     href: "/alerts",
+//     icon: "bi bi-bell",
+//   },
+//   {
+//     title: "Badges",
+//     href: "/badges",
+//     icon: "bi bi-patch-check",
+//   },
+//   {
+//     title: "Buttons",
+//     href: "/buttons",
+//     icon: "bi bi-hdd-stack",
+//   },
+//   {
+//     title: "Cards",
+//     href: "/cards",
+//     icon: "bi bi-card-text",
+//   },
+//   {
+//     title: "Grid",
+//     href: "/grid",
+//     icon: "bi bi-columns",
+//   },
+//   {
+//     title: "Table",
+//     href: "/table",
+//     icon: "bi bi-layout-split",
+//   },
+//   {
+//     title: "Forms",
+//     href: "/forms",
+//     icon: "bi bi-textarea-resize",
+//   },
+//   {
+//     title: "Breadcrumbs",
+//     href: "/breadcrumbs",
+//     icon: "bi bi-link",
+//   },
+//   {
+//     title: "About",
+//     href: "/about",
+//     icon: "bi bi-people",
+//   },
+//   {
+//     title:"fffff",
+//     href: "https://www.naver.com",
+//     icon: "bi bi-people",
+//   }
+// ];
+
 const navigation = [
   {
-    title: "Dashboard",
-    href: "/starter",
+    title: "홈",
+    href: "/main",
     icon: "bi bi-speedometer2",
   },
   {
-    title: "Alert",
-    href: "/alerts",
-    icon: "bi bi-bell",
+    title: "학생관리",
+    href: "/student",
+    icon: "bi bi-people",
   },
   {
-    title: "Badges",
-    href: "/badges",
-    icon: "bi bi-patch-check",
-  },
-  {
-    title: "Buttons",
-    href: "/buttons",
-    icon: "bi bi-hdd-stack",
-  },
-  {
-    title: "Cards",
-    href: "/cards",
+    title: "스케줄관리",
+    href: "/schedule",
     icon: "bi bi-card-text",
   },
-  {
-    title: "Grid",
-    href: "/grid",
-    icon: "bi bi-columns",
-  },
-  {
-    title: "Table",
-    href: "/table",
-    icon: "bi bi-layout-split",
-  },
-  {
-    title: "Forms",
-    href: "/forms",
-    icon: "bi bi-textarea-resize",
-  },
-  {
-    title: "Breadcrumbs",
-    href: "/breadcrumbs",
-    icon: "bi bi-link",
-  },
-  {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
-  },
-  {
-    title:"fffff",
-    href: "https://www.naver.com",
-    icon: "bi bi-people",
-  }
-];
+]
 
 const Sidebar = () => {
   const showMobilemenu = () => {
@@ -96,7 +114,7 @@ const Sidebar = () => {
               </Link>
             </NavItem>
           ))}
-          <Button
+          {/* <Button
             color="danger"
             tag="a"
             target="_blank"
@@ -104,7 +122,7 @@ const Sidebar = () => {
             href="https://www.wrappixel.com/templates/ample-react-dashboard/?ref=33"
           >
             Upgrade To Pro
-          </Button>
+          </Button> */}
         </Nav>
       </div>
     </div>

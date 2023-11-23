@@ -1,10 +1,11 @@
-import { ReactComponent as LogoDark } from "../assets/images/logos/amplelogo.svg";
+import logoImage from "../assets/images/logos/uSfD9Ae8YOjCQGxBMAFaIsTV8.webp";
 import { Link } from "react-router-dom";
+import "./layouts.css";
 
 const Logo = () => {
   return (
     <Link to="/">
-      <LogoDark />
+      <img src={logoImage} alt="Logo" className="logo-image" />
     </Link>
   );
 };
