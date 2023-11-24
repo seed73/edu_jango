@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import '../loginPage.css';
-import {login} from '../api/auth.js'
-
+import '../../css/LoginPage.css';
+import { login } from '../../../../api/auth.js';
 
 function LoginForm() {
     const [id, setId] = useState('');
@@ -9,31 +8,31 @@ function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await login(id,password);
+        const res = await login(id, password);
         console.log(res.error);
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="w-[315px] h-[60px] absolute left-[563px] top-[528px]">
+            <div className="login-input-container-id">
                 <input
                     value={id}
                     onChange={(e) => setId(e.target.value)}
-                    className="w-[315px] h-[60px] absolute left-[-1px] top-[-1px] rounded-[5px] bg-[#f2f5f6] pl-8"
+                    className="login-input"
                     placeholder='id'
                 />
             </div>
-            <div className="w-[315px] h-[60px] absolute left-[563px] top-[603px]">
+            <div className="login-input-container-password">
                 <input
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-[315px] h-[60px] absolute left-[-1px] top-[-1px] rounded-[5px] bg-[#f2f5f6] pl-8"
+                    className="login-input"
                     placeholder='password'
                     type='password'
                 />
             </div>
-            <div className="w-[315px] h-[60px] absolute left-[563px] top-[702px]">
-                <button type="submit" className="w-[315px] h-[60px] absolute left-[-1px] top-[-1px] rounded-[5px] bg-[#4880ee] text-base font-bold text-center text-white flex items-center justify-center">
+            <div className="login-button-container">
+                <button type="submit" className="login-button">
                     LOGIN
                 </button>
             </div>

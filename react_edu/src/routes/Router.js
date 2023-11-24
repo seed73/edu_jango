@@ -1,5 +1,7 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
+import { ProtectedRoute } from "./ProtectedRoute.js";
+import { isAuthenticated } from '../utils/auth.js';
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
@@ -20,6 +22,7 @@ const Aaaa = lazy(() => import("../views/ui/aaaa.js"));
 
 
 const Main = lazy(() => import("../views/ui/Main.js"));
+const LoginPage = lazy(() => import("../views/ui/LoginPage.js"));
 
 /*****Routes******/
 
@@ -29,7 +32,8 @@ const ThemeRoutes = [
     element: <FullLayout />,
     children: [
       { path: "/", element: <Navigate to="/main" /> },
-      { path: "/main", exact: true, element: <Main /> },
+      { path: "/main", exact: true, element: <ProtectedRoute><Main /></ProtectedRoute> },
+      { path: "/main2", exact: true, element: <Main /> },
       { path: "/starter", exact: true, element: <Starter /> },
       { path: "/student", exact: true, element: <Starter /> },
       { path: "/schedule", exact: true, element: <Starter /> },
@@ -44,6 +48,11 @@ const ThemeRoutes = [
       { path: "/breadcrumbs", exact: true, element: <Breadcrumbs /> },
       { path: "/aaaa", exact: true, element: <Aaaa /> },
     ],
+  },
+  { 
+    path: "/login",
+    element: isAuthenticated() ? <Navigate to="/main" /> : <LoginPage />,
+    exact: true,
   },
 ];
 
