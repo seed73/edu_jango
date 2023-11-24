@@ -14,7 +14,7 @@ function LoginForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="login-input-container-id">
+            <div>
                 <input
                     value={id}
                     onChange={(e) => setId(e.target.value)}
@@ -22,7 +22,7 @@ function LoginForm() {
                     placeholder='id'
                 />
             </div>
-            <div className="login-input-container-password">
+            <div>
                 <input
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
