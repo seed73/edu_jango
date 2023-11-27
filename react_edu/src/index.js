@@ -3,7 +3,7 @@ import {createRoot} from 'react-dom/client';
 import "./assets/scss/style.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Loader from "./layouts/loader/Loader";
 
 // import App from "./views/ui/LoginPage";
@@ -13,9 +13,9 @@ const root = createRoot(rootElement);
 
 root.render(
   <Suspense fallback={<Loader />}>
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </Suspense>
 );
 
