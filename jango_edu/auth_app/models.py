@@ -48,6 +48,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
         ('Other', 'Other'),
     ]
     id = models.AutoField(primary_key=True)
+    keycloak_id = models.CharField(max_length=50)    
     user_id = models.CharField(max_length=50, unique=True)
     name = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=15)
@@ -57,6 +58,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=50, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)  # 첫 생성시에만 현재 시간이 저장됩니다.
     updated_at = models.DateTimeField(auto_now=True)  # 매번 save()가 호출될 때마다 현재 시간으로 갱신됩니다.
+    position = models.CharField(max_length=50)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)  # 관리자 사이트에 접근할 수 있는지 여부

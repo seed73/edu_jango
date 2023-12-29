@@ -209,11 +209,6 @@ AUTH_USER_MODEL = 'auth_app.Account'
 
 SWAGGER_SETTINGS = {
       'SECURITY_DEFINITIONS': {
-         'DRF Token': {
-               'type': 'apiKey',
-               'name': 'Authorization',
-               'in': 'header'
-         },
          'LoginAuthorization': {
             'type': 'apiKey',
             'name': 'LoginAuthorization',
