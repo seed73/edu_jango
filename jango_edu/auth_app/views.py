@@ -7,6 +7,7 @@ from decouple import config
 from utils.logger import get_logger
 from rest_framework.permissions import AllowAny
 import jwt
+from rest_framework.decorators import action
 
 logger = get_logger()
 
@@ -78,3 +79,20 @@ class AccountViewSet(viewsets.ModelViewSet):
         except Exception as e:
             print(e)
         
+    @action(detail=False, methods=['get'], url_path='(?P<user_id>\w+)')
+    def get_user_by_user_id(self, request, *args, **kwargs):
+        user_id = kwargs.get('user_id')
+        try:
+            account = self.queryset.get(user_id=user_id)
+            serializer = self.serializer_class(account)
+            return Response(serializer.data)
+        except Account.DoesNotExist:
+            return Response(status=404)
+            
+    @action(detail=False, methods=['get'], url_path="recent", url_name="recent")
+    def custom_name(self, request):
+        """
+        Your custom logic goes here.
+        """
+        data = "Custom data or logic"
+        return Response(data)
