@@ -17,7 +17,7 @@ class ExamRecordViewSet(viewsets.ModelViewSet):
     queryset = ExamRecord.objects.all()
     serializer_class = ExamRecordSerializer
 
-    @action(detail=False, methods=['GET'], url_path='by_month/(?P<year>\d{4})/(?P<month>\d{1,2})', url_name='by_month')
+    @action(detail=False, methods=['GET'], url_path='by-month/(?P<year>\d{4})/(?P<month>\d{1,2})', url_name='by_month')
     def by_month(self, request, year=None, month=None):
         # 해당 년도와 월에 해당하는 레코드만 필터링
         records = ExamRecord.objects.filter(

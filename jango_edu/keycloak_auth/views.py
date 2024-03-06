@@ -7,11 +7,14 @@ from rest_framework import serializers
 from decouple import config
 from rest_framework.permissions import AllowAny
 import base64
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
+    csrfToken = serializers.CharField()
     
 class LoginView(APIView):
     permission_classes = [AllowAny]
@@ -20,6 +23,11 @@ class LoginView(APIView):
     def get_serializer(self, *args, **kwargs):
         return self.serializer_class(*args, **kwargs)
 
+    @swagger_auto_schema(manual_parameters=[
+        openapi.Parameter('LoginAuthorization', openapi.IN_HEADER,
+                          description="인증 토큰",
+                          type=openapi.TYPE_STRING)
+    ])
     def post(self, request):
 
         serializer = self.get_serializer(data=request.data)

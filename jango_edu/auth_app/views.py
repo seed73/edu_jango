@@ -79,7 +79,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         except Exception as e:
             print(e)
         
-    @action(detail=False, methods=['get'], url_path='(?P<user_id>\w+)')
+    @action(detail=False, methods=['get'], url_path='by-user-id/(?P<user_id>\w+)')
     def get_user_by_user_id(self, request, *args, **kwargs):
         user_id = kwargs.get('user_id')
         try:
