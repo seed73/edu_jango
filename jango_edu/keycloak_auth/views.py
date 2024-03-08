@@ -14,7 +14,7 @@ from drf_yasg import openapi
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
-    csrfToken = serializers.CharField()
+    # csrfToken = serializers.CharField()
     
 class LoginView(APIView):
     permission_classes = [AllowAny]
