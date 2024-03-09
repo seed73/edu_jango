@@ -209,9 +209,9 @@ AUTH_USER_MODEL = 'auth_app.Account'
 
 SWAGGER_SETTINGS = {
       'SECURITY_DEFINITIONS': {
-         'LoginAuthorization': {
+         'Authorization': {
             'type': 'apiKey',
-            'name': 'LoginAuthorization',
+            'name': 'Authorization',
             'in': 'header'
         },
       }
@@ -231,5 +231,5 @@ CORS_ALLOWED_ORIGINS = [
 
 #특정 헤더 허용
 CORS_ALLOW_HEADERS = list(default_headers) + [
-    'loginAuthorization',
+    'LoginAuthorization',
 ]
