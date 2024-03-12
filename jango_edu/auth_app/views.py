@@ -96,3 +96,12 @@ class AccountViewSet(viewsets.ModelViewSet):
         """
         data = "Custom data or logic"
         return Response(data)
+    
+    @action(detail=False, methods=['get'], url_path='self')
+    def get_self_info(self, request, *args, **kwargs):        
+        try:
+            account = self.queryset.get(user_id=request.auth.get('preferred_username'))
+            serializer = self.serializer_class(account)
+            return Response(serializer.data)
+        except Account.DoesNotExist:
+            return Response(status=404)
