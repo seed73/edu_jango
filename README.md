@@ -24,8 +24,6 @@ postgresSQL 설치해서 원격 접속해봄
 
 <https://velog.io/@new_wisdom/Django-3-Model-MTV-%ED%8C%A8%ED%84%B4> - 얘 할 차례임
 
-단비 기술스택
-• Celery, Redis, Apache Sentry, Travis CI, Jenkins, Git, Docker, PostgreSQL, DRF(Django REST framework), Django, Amazon Web Services(AWS)
 
 ## 추가적인 app 생성
 
